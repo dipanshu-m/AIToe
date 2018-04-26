@@ -1,4 +1,4 @@
-------------------------------------------  AI Toe- A Based-on-AI game!----------------------------------------------------
+--------------------  AI Toe- A Based-on-AI game!-----------------------
 
 
 
@@ -28,4 +28,4 @@ AUTHORS: Dipanshu Kumar Mahato and Ayush Keshri
 
 USER INSTRUCTIONS: You are adviced not to make any changes in this game! This may cause strange behaviour!
  
-	                 PS: You won't become a programmer if you change the credits to your name! :P :P :P
+	            PS: You won't become a programmer if you change the credits to your name! :P :P :P
