@@ -12,7 +12,7 @@ PURPOSE: To re-enjoy all the fun of world's one of most popular game- Tic Tac To
 
 
 
-VERSION: a0.1(alpha)
+VERSION: a0.2(alpha)
 
 
 
