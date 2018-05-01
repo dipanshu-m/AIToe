@@ -1,17 +1,17 @@
 //Project on the World's one of the most popular 'time-pass' game-->Tic Tac Toe! (:D) in CUI !!!
 // #MadeByDipanshu
 //iamawesomedkm
-//game version-a0.2
+//game version-a0.3(alpha)
 
 import java.io.*;
 
 public class tictactoe {
     static int won, lost, total;
-    static int p1p=0,p2p=0;
+    static int p1p = 0, p2p = 0;
     static String p1, p2;
-    static int gm=0;
-    static int wa=0;
-    static int overtime=0;
+    static int gm = 0;
+    static int wa = 0;
+    static int overtime = 0;
     static String name_sp;
 
     public static void main(String args[]) throws IOException {
@@ -21,7 +21,7 @@ public class tictactoe {
         int baa = 0;
         for (a = true; a != false; a = ab) /* Main Menu*/ {
             if (aa == 1) /* option*/ {
-                System.out.println("Type any one, from the following menu: \n  1- Play game\n  2- How to Play?(recommended for new players)\n  3- About\n ");
+                System.out.println("Please read the TERMS & CONDITIONS before making any changes to this game.\nType any one, from the following menu: \n  1- Play game\n  2- How to Play?(recommended for new players)\n  3- About\n ");
                 aa++;
             } else //option-1
                 System.out.println("Type any one, from the following menu: \n  1- Play game\n  2- How to Play?\n  3- About this game\n  4- Quit\n ");
@@ -86,8 +86,8 @@ public class tictactoe {
                                     as = true;
                                     System.out.print("\nPlease enter ONLY numbers, NOT alphabets! \n");
                                 } else {
-                                    long g1 = Long.parseLong(g_l);
-                                    long w1 = Long.parseLong(w_l);
+                                    double g1 = Double.parseDouble(g_l);
+                                    double w1 = Double.parseDouble(w_l);
                                     int d2;
                                     if (w1 > g1) {
                                         System.out.println("\nError! Game limit is lesser than win limit\n");
@@ -187,8 +187,8 @@ public class tictactoe {
                                             "Please try avoiding these errors and enter the values again\n");
                                 }
                                 if (d == false) {
-                                    int g1 = Integer.parseInt(g_l);
-                                    int w1 = Integer.parseInt(w_l);
+                                    double g1 = Double.parseDouble(g_l);
+                                    double w1 = Double.parseDouble(w_l);
                                     int d2;
                                     if (w1 > g1) {
                                         System.out.println("\nError! Game limit is lesser than win limit\n");
@@ -196,22 +196,14 @@ public class tictactoe {
                                     } else
                                         d2 = 1;
                                     if (d2 != 0) {
-                                        if (g1 < 0 || w1 < 0) {
+                                        if (g1 < 0.0 || w1 < 0.0) {
                                             System.out.println("Please note that the game limit and the win limit cannot be less than zero");
                                             d2 = 0;
                                         } else
                                             d2 = 1;
                                     }
-                                    if (d2 == 1) {
-                                        if(g1==0 || w1==0)
-                                        {
-                                        if(g1==0)
-                                            as = mp2v2(999999999, w1);
-                                        if(w1==0)
-                                            as = mp2v2(g1, 999999999);
-                                    } else
+                                    if (d2 == 1)
                                         as = mp2v2(g1, w1);
-                                    }
                                     else
                                         as = true;
                                 }
@@ -271,39 +263,53 @@ public class tictactoe {
                 "\nWARNING: In Single Player mode, exiting the game without completing will result in the accumulation of lost matches.\n");
     }
 
-    private static boolean mp2v2(int g, int w) throws IOException {
+    private static boolean mp2v2(double gaa, double waa) throws IOException {
         System.out.println("\nPre- Match instructions:\nIf there is a tie between the 1st and the 2nd player" +
                 ", \nthe game will automatically increase its limit to a number which can be decided by you.\n" +
                 "However, if you do not wish to complete the game, you can always abandon the match by typing (quit/bye/exit/abandon)." +
                 "\nYou can even quit the game during a match by typing those words mentioned above.|\n|\n|\n|\n|\n");
         BufferedReader abc = new BufferedReader(new InputStreamReader(System.in));
         boolean i, ii = false;
+        long g = 0, w = 0;
+        int chaa = 0;
+        if (gaa >= 999999999 || gaa == 0) {
+            g = 999999999;
+            chaa = 1;
+        }
+        if (waa >= 999999999 || waa == 0) {
+            w = 99999999;
+            chaa = 1;
+        }
+        if (chaa != 1) {
+            g = (long) gaa;
+            w = (long) waa;
+        }
         int cho;
-        int k=1;
-        if(overtime!=1) {
+        int k = 1;
+        if (overtime != 1) {
             p1p = 0;
             p2p = 0;
         }
         boolean dec = false;
         int che = 0;
         int de = 0;
-        if(overtime!=1) {
+        if (overtime != 1) {
             System.out.println("X-Player 1: ");
             p1 = abc.readLine();
             System.out.println("O-Player 2: ");
             p2 = abc.readLine();
         }
-        gm+=g;
-        wa+=w;
+        gm += g;
+        wa += w;
         int q = 0;
-        for (k = 1; k<=g; k++) {
+        for (k = 1; k <= g; k++) {
             char arr1[][] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
             if (de == 0) {
                 System.out.print("User instructions.(to be followed strictly)");
                 table();
                 de = 1;
             }
-            if(overtime!=1)
+            if (overtime != 1)
                 System.out.println("------------------- Round " + k + " -------------------\n\n");
             else
                 System.out.println("------------------- Overtime Round " + k + " -------------------\n\n");
@@ -315,15 +321,14 @@ public class tictactoe {
                     System.out.println("\n" + p2 + "'s turn as O\n");
                 boolean bb, ass = false;
                 for (bb = true; bb != false; bb = ass) {
-                    cho=0;
+                    cho = 0;
                     System.out.print("Enter the location(99 for table if you have forgotten): ");
                     String location = abc.readLine();
-                    if (location.equals("quit") || location.equals("bye") || location.equals("exit") || location.equals("abandon") || location.equals("QUIT") || location.equals("BYE") || location.equals("ABANDON") || location.equals("EXIT"))
-                    {
+                    if (location.equals("quit") || location.equals("bye") || location.equals("exit") || location.equals("abandon") || location.equals("QUIT") || location.equals("BYE") || location.equals("ABANDON") || location.equals("EXIT")) {
                         q = 1;
-                        overtime=0;
-                        wa=0;
-                        gm=0;
+                        overtime = 0;
+                        wa = 0;
+                        gm = 0;
                     }
                     if (q == 1)
                         break;
@@ -353,7 +358,11 @@ public class tictactoe {
                     if (cho != 1) {
                         if (q == 1)
                             break;
-                        no = Integer.parseInt(location);
+                        double qw = Double.parseDouble(location);
+                        if (qw >= 9999.0)
+                            no = 999;
+                        else
+                            no = Integer.parseInt(location);
                         switch (no) {
                             case 1:
                                 if (arr1[0][0] == ' ') {
@@ -475,7 +484,7 @@ public class tictactoe {
                     } else {
                         if (q == 1)
                             break;
-                        System.out.println("Please enter only numerical values. Alphabetical numbers are not accepted");
+                        System.out.println("Please do not enter any random value. Try again and enter the location again");
                         ass = true;
                     }
                     if (no != 99 && no >= 1 && no <= 9) {
@@ -490,16 +499,16 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p1 + "\'s team wins this game\nGood try " + p2 + "'s Team!!!");
                             wlp1 = 1;
                             p1p += 1;
-                            if(p1p==wa)
-                                overtime=0;
+                            if (p1p == wa)
+                                overtime = 0;
                             if (wlp1 == 1)
                                 break;
                         }
                         if (arr1[0][0] == 'O' && arr1[0][1] == 'O' && arr1[0][2] == 'O') {
                             System.out.println("Congratulations!!! " + p2 + "\'s team wins this game\nGood try " + p1 + "'s Team!!!");
                             wlp2 = 1;
-                            if(p2p==wa)
-                                overtime=0;
+                            if (p2p == wa)
+                                overtime = 0;
                             p2p += 1;
                             if (wlp2 == 1)
                                 break;
@@ -508,8 +517,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p1 + "\'s team wins this game\nGood try " + p2 + "'s Team!!!");
                             wlp1 = 1;
                             p1p += 1;
-                            if(p1p==wa)
-                                overtime=0;
+                            if (p1p == wa)
+                                overtime = 0;
                             if (wlp1 == 1)
                                 break;
                         }
@@ -517,8 +526,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p2 + "\'s team wins this game\nGood try " + p1 + "'s Team!!!");
                             wlp2 = 1;
                             p2p += 1;
-                            if(p2p==wa)
-                                overtime=0;
+                            if (p2p == wa)
+                                overtime = 0;
                             if (wlp2 == 1)
                                 break;
                         }
@@ -526,8 +535,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p1 + "\'s team wins this game\nGood try " + p2 + "'s Team!!!");
                             wlp1 = 1;
                             p1p += 1;
-                            if(p1p==wa)
-                                overtime=0;
+                            if (p1p == wa)
+                                overtime = 0;
                             if (wlp1 == 1)
                                 break;
                         }
@@ -535,8 +544,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p2 + "\'s team wins this game\nGood try " + p1 + "'s Team!!!");
                             wlp2 = 1;
                             p2p += 1;
-                            if(p2p==wa)
-                                overtime=0;
+                            if (p2p == wa)
+                                overtime = 0;
                             if (wlp2 == 1)
                                 break;
                         }
@@ -544,8 +553,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p1 + "\'s team wins this game\nGood try " + p2 + "'s Team!!!");
                             wlp1 = 1;
                             p1p += 1;
-                            if(p1p==wa)
-                                overtime=0;
+                            if (p1p == wa)
+                                overtime = 0;
                             if (wlp1 == 1)
                                 break;
                         }
@@ -553,8 +562,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p2 + "\'s team wins this game\nGood try " + p1 + "'s Team!!!");
                             wlp2 = 1;
                             p2p += 1;
-                            if(p2p==wa)
-                                overtime=0;
+                            if (p2p == wa)
+                                overtime = 0;
                             if (wlp2 == 1)
                                 break;
                         }
@@ -562,8 +571,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p1 + "\'s team wins this game\nGood try " + p2 + "'s Team!!!");
                             wlp1 = 1;
                             p1p += 1;
-                            if(p1p==wa)
-                                overtime=0;
+                            if (p1p == wa)
+                                overtime = 0;
                             if (wlp1 == 1)
                                 break;
                         }
@@ -571,8 +580,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p2 + "\'s team wins this game\nGood try " + p1 + "'s Team!!!");
                             wlp2 = 1;
                             p2p += 1;
-                            if(p2p==wa)
-                                overtime=0;
+                            if (p2p == wa)
+                                overtime = 0;
                             if (wlp2 == 1)
                                 break;
                         }
@@ -580,8 +589,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p1 + "\'s team wins this game\nGood try " + p2 + "'s Team!!!");
                             wlp1 = 1;
                             p1p += 1;
-                            if(p1p==wa)
-                                overtime=0;
+                            if (p1p == wa)
+                                overtime = 0;
                             if (wlp1 == 1)
                                 break;
                         }
@@ -589,8 +598,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p2 + "\'s team wins this game\nGood try " + p1 + "'s Team!!!");
                             wlp2 = 1;
                             p2p += 1;
-                            if(p2p==wa)
-                                overtime=0;
+                            if (p2p == wa)
+                                overtime = 0;
                             if (wlp2 == 1)
                                 break;
                         }
@@ -598,8 +607,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p1 + "\'s team wins this game\nGood try " + p2 + "'s Team!!!");
                             wlp1 = 1;
                             p1p += 1;
-                            if(p1p==wa)
-                                overtime=0;
+                            if (p1p == wa)
+                                overtime = 0;
                             if (wlp1 == 1)
                                 break;
                         }
@@ -607,8 +616,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p2 + "\'s team wins this game\nGood try " + p1 + "'s Team!!!");
                             wlp2 = 1;
                             p2p += 1;
-                            if(p2p==wa)
-                                overtime=0;
+                            if (p2p == wa)
+                                overtime = 0;
                             if (wlp2 == 1)
                                 break;
                         }
@@ -616,8 +625,8 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p1 + "\'s team wins this game\nGood try " + p2 + "'s Team!!!");
                             wlp1 = 1;
                             p1p += 1;
-                            if(p1p==wa)
-                                overtime=0;
+                            if (p1p == wa)
+                                overtime = 0;
                             if (wlp1 == 1)
                                 break;
                         }
@@ -625,14 +634,14 @@ public class tictactoe {
                             System.out.println("Congratulations!!! " + p2 + "\'s team wins this game\nGood try " + p1 + "'s Team!!!");
                             wlp2 = 1;
                             p2p += 1;
-                            if(p2p==wa)
-                                overtime=0;
+                            if (p2p == wa)
+                                overtime = 0;
                             if (wlp2 == 1)
                                 break;
                         }
                     }
                     if (p2p == wa || p1p == wa)
-                            break;
+                        break;
                     if (wlp2 == 1 || wlp1 == 1)
                         break;
 
@@ -641,8 +650,8 @@ public class tictactoe {
                 }
                 if (wlp2 == 1 || wlp1 == 1)
                     break;
-                    if (p2p == wa || p1p == wa)
-                        break;
+                if (p2p == wa || p1p == wa)
+                    break;
                 if (q == 1)
                     break;
             }
@@ -652,21 +661,19 @@ public class tictactoe {
             if (q == 1)
                 break;
         }
-        k-=1;
-        if(overtime!=1) {
+        k -= 1;
+        if (overtime != 1) {
             if (p1p == p2p && (p1p + p2p) == gm) {
                 overtime = 1;
             }
-            if(p1p==p2p && k==gm) {
+            if (p1p == p2p && k == gm) {
                 overtime = 1;
             }
-        }
-        else
-        {
+        } else {
             if (p1p == p2p && (p1p + p2p) == gm) {
                 overtime = 1;
             }
-            if(p1p==p2p && k==gm) {
+            if (p1p == p2p && k == gm) {
                 overtime = 1;
             }
         }
@@ -674,11 +681,10 @@ public class tictactoe {
             if (q == 1)
                 break;
             String qa;
-            if(overtime!=1) {
+            if (overtime != 1) {
                 System.out.print("Do you want to play Multi-Player mode again?(y/n) ");
-                 qa= abc.readLine();
-            }
-            else {
+                qa = abc.readLine();
+            } else {
                 System.out.println("Overtime match");
                 qa = "Y";
             }
@@ -700,7 +706,7 @@ public class tictactoe {
         return dec;
     }
 
-    private static boolean sp(long g, long w) {
+    private static boolean sp(double g, double w) {
         System.out.println("Under Construction");
         return false;
     }
@@ -709,12 +715,20 @@ public class tictactoe {
         System.out.println("\n----------------------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println();
-        System.out.println("\t\t\t\t\tTic Tac Toe!\n\nGame Version- a0.2(alpha)\n");
+        System.out.println("\t\t\t\t\tTic Tac Toe!\n\nGame Version- a0.3(alpha)\n");
+        System.out.println("Game sponsored by: Kushagra Prasad");
+        System.out.println("Catch him LIVE on SOCIAL MEDIA: ");
+        System.out.println("               Facebook  : https://www.facebook.com/profile.php?id=100012095773529/");
+        System.out.println("               Instagram : https://www.instagram.com/kushagra.prasad17/");
+        System.out.println("               Twitter   : https://www.twitter.com/prasad_kushagra/");
+        System.out.println("               Youtube   : https://www.youtube.com/channel/UCtKLew6p6-RiRNir81YPmg\n                           Channel Name: Kushagra Prasad");
         System.out.println("About this game: ");
         System.out.println("Get stirred in the immense pleasure of joy and happiness, remembering the olden days coming back again to your life in a new and advanced way.\n This game brings about a variety of vintage cahnges like, the use of Character User Interface (aka CUI)\n \"Getting Bored? Or Nobody to play this game with!\", this game uses AI module(in its primitive form)  to get your smile back in your face, happiness ushering in your lips. \n This game also saves trees: So say no to paper! :D");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("\nAbout the update: 1) Now, you can play with your friends in the new 2v2 module");
-        System.out.println("                  2) Fixed few gramatical errors in the project");
+        System.out.println("                  2) Fixed few grammatical errors in the project");
+        System.out.println("                  3) Fixed a major bug which crashed the game.");
+        System.out.println("                  4) Made the game more stable and efficient.");
         System.out.println("Credits:  ");
         System.out.println("\tDeveloper and Project Manager- Dipanshu Kumar Mahato.\n\tDebugger and Project tester - Ayush Keshri");
         System.out.println("This game is an open source game. Distribute it as much as you can. NO trademark, NO copyright!!! :D");
@@ -724,10 +738,9 @@ public class tictactoe {
         System.out.println("            dipanshumahato@gmail.com\n\tFeedback is heartily invited!");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("\n\nThis is my first game and if you liked this one, do follow me on Social Media:");
-        System.out.println("Facebook(for my usual stuff) : https://www.facebook.com/i.am.awesome.dkm/");
-        System.out.println("   Instagram(for gaming)     : https://www.instagram.com/iamawesomedkm/");
-        System.out.println("    Twitter(for tech)        : https://www.twitter.com/iamawesomedkm/");
-        System.out.println("\nPS:I love to play Counter-Strike 1.6. Is anyone out there who even plays this game too?");
+        System.out.println("               GitHub   : https://www.github.com/iamawesomedkm/");
+        System.out.println("               Facebook : https://www.facebook.com/profile.php?i.am.awesome.dkm/");
+        System.out.println("               Twitter  : https://www.twitter.com/iamawesomedkm/");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------\n\n");
     }
@@ -788,13 +801,6 @@ public class tictactoe {
         System.out.println("\n\t\t\t\tPS:Please scroll up to view the full instruction(s) again");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------\n\n");
-        // The DDA is getting printed again and again so as to make user covenient
-        // about what's happening in the game and help in wondering about what must his next step be.
     }
 }
-//dkmrock
-//please do not edit the code
-//almost bugless
-//@iamawesomedkm
-//OMG
-//Reached 800! :O !!!
+//read the terms before editing the game
