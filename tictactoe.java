@@ -1,7 +1,8 @@
 //Project on the World's one of the most popular 'time-pass' game-->Tic Tac Toe! (:D) in CUI !!!
 // #MadeByDipanshu
 //iamawesomedkm
-//game version-a0.3(alpha)
+//game version-a0.4(alpha)
+//read the terms before editing the game
 
 import java.io.*;
 
@@ -330,8 +331,10 @@ public class tictactoe {
                         wa = 0;
                         gm = 0;
                     }
-                    if (q == 1)
+                    if (q == 1) {
+                        overtime=0;
                         break;
+                    }
                     for (int ch = 0; ch < location.length(); ch++) {
                         if (Character.isLetterOrDigit(location.charAt(ch)) == true || Character.isWhitespace(location.charAt(ch)) == true) {
                             if (Character.isLetter(location.charAt(ch)) == true) {
@@ -356,8 +359,10 @@ public class tictactoe {
                     }
                     int no = 0;
                     if (cho != 1) {
-                        if (q == 1)
+                        if (q == 1) {
+                            overtime=0;
                             break;
+                        }
                         double qw = Double.parseDouble(location);
                         if (qw >= 9999.0)
                             no = 999;
@@ -482,8 +487,10 @@ public class tictactoe {
                                 ass = true;
                         }
                     } else {
-                        if (q == 1)
+                        if (q == 1) {
+                            overtime=0;
                             break;
+                        }
                         System.out.println("Please do not enter any random value. Try again and enter the location again");
                         ass = true;
                     }
@@ -645,21 +652,27 @@ public class tictactoe {
                     if (wlp2 == 1 || wlp1 == 1)
                         break;
 
-                    if (q == 1)
+                    if (q == 1) {
+                        overtime=0;
                         break;
+                    }
                 }
                 if (wlp2 == 1 || wlp1 == 1)
                     break;
                 if (p2p == wa || p1p == wa)
                     break;
-                if (q == 1)
+                if (q == 1) {
+                    overtime=0;
                     break;
+                }
             }
             System.out.println("\nScore of " + p1 + "'s team to " + p2 + "'s team is: " + p1p + " to " + p2p + "\n");
             if (p1p == wa || p2p == wa)
                 break;
-            if (q == 1)
+            if (q == 1) {
+                overtime=0;
                 break;
+            }
         }
         k -= 1;
         if (overtime != 1) {
@@ -678,8 +691,10 @@ public class tictactoe {
             }
         }
         for (i = true; i != false; i = ii) {
-            if (q == 1)
+            if (q == 1) {
+                overtime=0;
                 break;
+            }
             String qa;
             if (overtime != 1) {
                 System.out.print("Do you want to play Multi-Player mode again?(y/n) ");
@@ -715,20 +730,17 @@ public class tictactoe {
         System.out.println("\n----------------------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println();
-        System.out.println("\t\t\t\t\tTic Tac Toe!\n\nGame Version- a0.3(alpha)\n");
+        System.out.println("\t\t\t\t\tTic Tac Toe!\n\nGame Version- a0.4(alpha)\n");
         System.out.println("Game sponsored by: Kushagra Prasad");
         System.out.println("Catch him LIVE on SOCIAL MEDIA: ");
         System.out.println("               Facebook  : https://www.facebook.com/profile.php?id=100012095773529/");
         System.out.println("               Instagram : https://www.instagram.com/kushagra.prasad17/");
         System.out.println("               Twitter   : https://www.twitter.com/prasad_kushagra/");
-        System.out.println("               Youtube   : https://www.youtube.com/channel/UCtKLew6p6-RiRNir81YPmg\n                           Channel Name: Kushagra Prasad");
+        System.out.println("               Youtube   : https://www.youtube.com/channel/UCtKLew6p6-RiRN7ir81YPmg\n                           Channel Name: Kushagra Prasad");
         System.out.println("About this game: ");
-        System.out.println("Get stirred in the immense pleasure of joy and happiness, remembering the olden days coming back again to your life in a new and advanced way.\n This game brings about a variety of vintage cahnges like, the use of Character User Interface (aka CUI)\n \"Getting Bored? Or Nobody to play this game with!\", this game uses AI module(in its primitive form)  to get your smile back in your face, happiness ushering in your lips. \n This game also saves trees: So say no to paper! :D");
+        System.out.println("Get stirred in the immense pleasure of joy and happiness, remembering the olden days coming back again to your life in a new and advanced way.\n This game brings about a variety of vintage changes like, the use of Character User Interface (aka CUI)\n \"Getting Bored? Or Nobody to play this game with!\", this game uses AI module(in its primitive form)  to get your smile back in your face, happiness ushering in your lips. \n This game also saves trees: So say no to paper! :D");
         System.out.println("----------------------------------------------------------------------------------------------------------");
-        System.out.println("\nAbout the update: 1) Now, you can play with your friends in the new 2v2 module");
-        System.out.println("                  2) Fixed few grammatical errors in the project");
-        System.out.println("                  3) Fixed a major bug which crashed the game.");
-        System.out.println("                  4) Made the game more stable and efficient.");
+        System.out.println("\nAbout the update: Fixed some minor bugs in the game.");
         System.out.println("Credits:  ");
         System.out.println("\tDeveloper and Project Manager- Dipanshu Kumar Mahato.\n\tDebugger and Project tester - Ayush Keshri");
         System.out.println("This game is an open source game. Distribute it as much as you can. NO trademark, NO copyright!!! :D");
