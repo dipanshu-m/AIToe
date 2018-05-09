@@ -1,7 +1,7 @@
 //Project on the World's one of the most popular 'time-pass' game-->Tic Tac Toe! (:D) in CUI !!!
 // #MadeByDipanshu
 //iamawesomedkm
-//game version-a0.4(alpha)
+//game version-a0.5(alpha)
 //read the terms before editing the game
 
 import java.io.*;
@@ -28,6 +28,7 @@ public class tictactoe {
                 System.out.println("Type any one, from the following menu: \n  1- Play game\n  2- How to Play?\n  3- About this game\n  4- Quit\n ");
             System.out.print("Your choice? ");
             String in = br.readLine();
+            in=in.trim();
             if (in.equals("1") || in.equals("2") || in.equals("3") || in.equals("4")) /* Enter from user*/ {
                 if (in.equals("1")) {
                     boolean aaa, abb = false;
@@ -35,6 +36,7 @@ public class tictactoe {
                         System.out.println("   Select any one: \n     1- Single Player\n     2- Multi Player(2v2)\n     3- go back\n     4- Exit the game\n     99-Display table of locations"); // Subpart
                         System.out.print("Your choice: ");
                         String inp = br.readLine();
+                        inp=inp.trim();
                         int ch = 0;
                         if (inp.equals("1")) {
                             boolean bb, as = false;
@@ -43,6 +45,8 @@ public class tictactoe {
                                 String g_l = br.readLine();
                                 System.out.print("Enter the limit of the total no. of wins(0 for unlimited): ");
                                 String w_l = br.readLine();
+                                g_l=g_l.trim();
+                                w_l=w_l.trim();
                                 int gl = g_l.length();
                                 int wl = w_l.length();
                                 int d1 = 0;
@@ -118,6 +122,8 @@ public class tictactoe {
                                 String g_l = br.readLine();
                                 System.out.print("Enter the limit of the total no. of wins(0 for unlimited): ");
                                 String w_l = br.readLine();
+                                g_l=g_l.trim();
+                                w_l=w_l.trim();
                                 int gl = g_l.length();
                                 int wl = w_l.length();
                                 int d1 = 0;
@@ -261,7 +267,7 @@ public class tictactoe {
         System.out.println("-----|-----|----");
         System.out.println(" <7> | <8> | <9>");
         System.out.println("\nIf you want to exit the game during the match, you can enter quit/bye/exit/abandon and get out." +
-                "\nWARNING: In Single Player mode, exiting the game without completing will result in the accumulation of lost matches.\n");
+                "\nWARNING: In Single Player mode, exiting the game without completing will result in loss of the match.\n");
     }
 
     private static boolean mp2v2(double gaa, double waa) throws IOException {
@@ -299,6 +305,8 @@ public class tictactoe {
             p1 = abc.readLine();
             System.out.println("O-Player 2: ");
             p2 = abc.readLine();
+            p1=p1.trim();
+            p2=p2.trim();
         }
         gm += g;
         wa += w;
@@ -325,6 +333,7 @@ public class tictactoe {
                     cho = 0;
                     System.out.print("Enter the location(99 for table if you have forgotten): ");
                     String location = abc.readLine();
+                    location=location.trim();
                     if (location.equals("quit") || location.equals("bye") || location.equals("exit") || location.equals("abandon") || location.equals("QUIT") || location.equals("BYE") || location.equals("ABANDON") || location.equals("EXIT")) {
                         q = 1;
                         overtime = 0;
@@ -699,6 +708,7 @@ public class tictactoe {
             if (overtime != 1) {
                 System.out.print("Do you want to play Multi-Player mode again?(y/n) ");
                 qa = abc.readLine();
+                qa=qa.trim();
             } else {
                 System.out.println("Overtime match");
                 qa = "Y";
@@ -730,33 +740,36 @@ public class tictactoe {
         System.out.println("\n----------------------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println();
-        System.out.println("\t\t\t\t\tTic Tac Toe!\n\nGame Version- a0.4(alpha)\n");
-        System.out.println("Game sponsored by: Kushagra Prasad");
+        System.out.println("\t\t\t\t\tTic Tac Toe!\n\nGame Version- a0.5(alpha)\n");
+        System.out.println("This game is currently sponsored by: Kushagra Prasad");
         System.out.println("Catch him LIVE on SOCIAL MEDIA: ");
         System.out.println("               Facebook  : https://www.facebook.com/profile.php?id=100012095773529/");
         System.out.println("               Instagram : https://www.instagram.com/kushagra.prasad17/");
         System.out.println("               Twitter   : https://www.twitter.com/prasad_kushagra/");
         System.out.println("               Youtube   : https://www.youtube.com/channel/UCtKLew6p6-RiRN7ir81YPmg\n                           Channel Name: Kushagra Prasad");
+        System.out.println("       I you want yourself to be sponsored in the game, then please contact me(developer) from the provided details given in the bottom");
         System.out.println("About this game: ");
         System.out.println("Get stirred in the immense pleasure of joy and happiness, remembering the olden days coming back again to your life in a new and advanced way.\n This game brings about a variety of vintage changes like, the use of Character User Interface (aka CUI)\n \"Getting Bored? Or Nobody to play this game with!\", this game uses AI module(in its primitive form)  to get your smile back in your face, happiness ushering in your lips. \n This game also saves trees: So say no to paper! :D");
         System.out.println("----------------------------------------------------------------------------------------------------------");
-        System.out.println("\nAbout the update: Fixed some minor bugs in the game.");
+        System.out.println("\nAbout the update: 1) Minor bugs fixed.");
         System.out.println("Credits:  ");
-        System.out.println("\tDeveloper and Project Manager- Dipanshu Kumar Mahato.\n\tDebugger and Project tester - Ayush Keshri");
-        System.out.println("This game is an open source game. Distribute it as much as you can. NO trademark, NO copyright!!! :D");
+        System.out.println("\tDeveloper and Project Manager- Dipanshu Kumar Mahato.\n\tBug finder and data analyst- Ayush Keshri");
+        System.out.println("This game is an open source game. Distribute it as much as you can. NO trademark, NO copyright!!!(T&C applies)");
         System.out.println();
         System.out.println("----------------------------------------------------------------------------------------------------------");
-        System.out.println("Have you found any bug? Do contact me at my e-mail, which is provided below: ");
-        System.out.println("            dipanshumahato@gmail.com\n\tFeedback is heartily invited!");
+        System.out.println("Have you found any bug? Please mail me to the following ID: ");
+        System.out.println("            dipanshumahato@gmail.com\n\tFeedback about this game is also welcomed!");
         System.out.println("----------------------------------------------------------------------------------------------------------");
-        System.out.println("\n\nThis is my first game and if you liked this one, do follow me on Social Media:");
-        System.out.println("               GitHub   : https://www.github.com/iamawesomedkm/");
-        System.out.println("               Facebook : https://www.facebook.com/profile.php?i.am.awesome.dkm/");
-        System.out.println("               Twitter  : https://www.twitter.com/iamawesomedkm/");
+        System.out.println("\n\nFor regular updates about the game, follow me on social media:");
+        System.out.println("               GitHub(content upload)   : https://www.github.com/iamawesomedkm/");
+        System.out.println("               Facebook(highly active)  : https://www.facebook.com/profile.php?i.am.awesome.dkm/\n");
+        System.out.println("!!!!!AN ANDROID APPLICATION FOR THIS GAME WILL BE AVAILABLE SOON!!!!!! Stay tuned\n");
+        System.out.println("To people who wants to really read the code and improve this game:");
+        System.out.println("    This game, after fixation of lots of bugs, has become too complex to understand.\nAdding fuel to fire is the fact that there are very less usage of comments.\nI, Dipanshu Mahato, being the developer of this game, seek for apologise for the problem,\n By the first android app release, I will try to make the code as simple as possible, even adding comments. :D");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------\n\n");
     }
-
+    
     private static void intro
             () /* This method only consists of print statements showing the interacting user how to play the game */ {
         System.out.println("\n----------------------------------------------------------------------------------------------------------");
