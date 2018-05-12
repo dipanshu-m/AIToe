@@ -1,19 +1,20 @@
 //Project on the World's one of the most popular 'time-pass' game-->Tic Tac Toe! (:D) in CUI !!!
 // #MadeByDipanshu
 //iamawesomedkm
-//game version-a0.5(alpha)
+//game version-a0.6(alpha)
 //read the terms before editing the game
 
 import java.io.*;
 
-public class tictactoe {
-    static int won, lost, total;
+public class game {
     static int p1p = 0, p2p = 0;
     static String p1, p2;
     static int gm = 0;
     static int wa = 0;
     static int overtime = 0;
+    static String inp;
     static String name_sp;
+    static int ssa=0;
 
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -28,25 +29,28 @@ public class tictactoe {
                 System.out.println("Type any one, from the following menu: \n  1- Play game\n  2- How to Play?\n  3- About this game\n  4- Quit\n ");
             System.out.print("Your choice? ");
             String in = br.readLine();
-            in=in.trim();
+            in = in.trim();
             if (in.equals("1") || in.equals("2") || in.equals("3") || in.equals("4")) /* Enter from user*/ {
                 if (in.equals("1")) {
                     boolean aaa, abb = false;
                     for (aaa = true; aaa != false; aaa = abb) {
-                        System.out.println("   Select any one: \n     1- Single Player\n     2- Multi Player(2v2)\n     3- go back\n     4- Exit the game\n     99-Display table of locations"); // Subpart
+                        System.out.println("   Select any one: \n     1- Single Player(Human vs CPU)\n     2- Multi Player(Human vs Human)\n     3- go back\n     4- Exit the game\n     99-Display table of locations"); // Subpart
                         System.out.print("Your choice: ");
-                        String inp = br.readLine();
-                        inp=inp.trim();
+                        inp = br.readLine();
+                        ssa=0;
+                        inp = inp.trim();
                         int ch = 0;
                         if (inp.equals("1")) {
                             boolean bb, as = false;
-                            for (bb = true; bb != false; bb = as) /*2v2 pre-game options*/ {
+                            System.out.print("-----------------------------------------------------");
+                            System.out.print("\n----------------Single Player MODE-----------------\n");
+                            for (bb = true; bb != false; bb = as) {
                                 System.out.print("Enter the limit of the game(0 for unlimited):  ");
                                 String g_l = br.readLine();
                                 System.out.print("Enter the limit of the total no. of wins(0 for unlimited): ");
                                 String w_l = br.readLine();
-                                g_l=g_l.trim();
-                                w_l=w_l.trim();
+                                g_l = g_l.trim();
+                                w_l = w_l.trim();
                                 int gl = g_l.length();
                                 int wl = w_l.length();
                                 int d1 = 0;
@@ -107,6 +111,7 @@ public class tictactoe {
                                             d2 = 1;
                                     }
                                     if (d2 == 1) {
+                                        naming(1);
                                         sp(g1, w1);
                                         as = false;
                                     } else
@@ -117,16 +122,17 @@ public class tictactoe {
                         }
                         if (inp.equals("2")) {
                             boolean bb, as = false;
+                            System.out.print("-----------------------------------------------------");
+                            System.out.print("\n----------------Multi Player MODE-----------------\n");
                             for (bb = true; bb != false; bb = as) /*2v2 pre-game options*/ {
                                 System.out.print("Enter the limit of the game(0 for unlimited):  ");
                                 String g_l = br.readLine();
                                 System.out.print("Enter the limit of the total no. of wins(0 for unlimited): ");
                                 String w_l = br.readLine();
-                                g_l=g_l.trim();
-                                w_l=w_l.trim();
+                                g_l = g_l.trim();
+                                w_l = w_l.trim();
                                 int gl = g_l.length();
                                 int wl = w_l.length();
-                                int d1 = 0;
                                 boolean d = false;
                                 if (gl > wl) {
                                     for (int i = 0; i < wl; i++) {
@@ -144,7 +150,7 @@ public class tictactoe {
                                             break;
                                         }
                                     }
-                                    for (int i = gl; i < gl - wl; i++) {
+                                    for (int i = wl; i < gl - wl; i++) {
                                         if (Character.isLetterOrDigit(g_l.charAt(i)) == true || Character.isWhitespace(g_l.charAt(i)) == true) {
                                             if (Character.isLetter(g_l.charAt(i)) == true) {
                                                 d = true;
@@ -180,10 +186,6 @@ public class tictactoe {
                                         }
                                     }
                                 }
-                                if (gl < wl)
-                                    d = true;
-                                if (gl < 0 || wl < 0)
-                                    d = true;
                                 if (d == true) {
                                     as = true;
                                     System.out.println("\nOops! An error is caused!\n" +
@@ -209,9 +211,13 @@ public class tictactoe {
                                         } else
                                             d2 = 1;
                                     }
-                                    if (d2 == 1)
-                                        as = mp2v2(g1, w1);
-                                    else
+                                    if (d2 == 1) {
+                                        naming(2);
+                                        if(ssa==0) {
+                                            as = mp2v2(g1, w1);
+                                        }
+
+                                    } else
                                         as = true;
                                 }
                             }
@@ -277,20 +283,16 @@ public class tictactoe {
                 "\nYou can even quit the game during a match by typing those words mentioned above.|\n|\n|\n|\n|\n");
         BufferedReader abc = new BufferedReader(new InputStreamReader(System.in));
         boolean i, ii = false;
-        long g = 0, w = 0;
-        int chaa = 0;
-        if (gaa >= 999999999 || gaa == 0) {
+        long g, w;
+        if (gaa > 999999999 || gaa == 0) {
             g = 999999999;
-            chaa = 1;
-        }
-        if (waa >= 999999999 || waa == 0) {
-            w = 99999999;
-            chaa = 1;
-        }
-        if (chaa != 1) {
+        } else
             g = (long) gaa;
+        if (waa > 999999999 || waa == 0) {
+            w = 99999999;
+        } else
             w = (long) waa;
-        }
+
         int cho;
         int k = 1;
         if (overtime != 1) {
@@ -300,14 +302,6 @@ public class tictactoe {
         boolean dec = false;
         int che = 0;
         int de = 0;
-        if (overtime != 1) {
-            System.out.println("X-Player 1: ");
-            p1 = abc.readLine();
-            System.out.println("O-Player 2: ");
-            p2 = abc.readLine();
-            p1=p1.trim();
-            p2=p2.trim();
-        }
         gm += g;
         wa += w;
         int q = 0;
@@ -333,7 +327,7 @@ public class tictactoe {
                     cho = 0;
                     System.out.print("Enter the location(99 for table if you have forgotten): ");
                     String location = abc.readLine();
-                    location=location.trim();
+                    location = location.trim();
                     if (location.equals("quit") || location.equals("bye") || location.equals("exit") || location.equals("abandon") || location.equals("QUIT") || location.equals("BYE") || location.equals("ABANDON") || location.equals("EXIT")) {
                         q = 1;
                         overtime = 0;
@@ -341,7 +335,7 @@ public class tictactoe {
                         gm = 0;
                     }
                     if (q == 1) {
-                        overtime=0;
+                        overtime = 0;
                         break;
                     }
                     for (int ch = 0; ch < location.length(); ch++) {
@@ -369,7 +363,7 @@ public class tictactoe {
                     int no = 0;
                     if (cho != 1) {
                         if (q == 1) {
-                            overtime=0;
+                            overtime = 0;
                             break;
                         }
                         double qw = Double.parseDouble(location);
@@ -497,7 +491,7 @@ public class tictactoe {
                         }
                     } else {
                         if (q == 1) {
-                            overtime=0;
+                            overtime = 0;
                             break;
                         }
                         System.out.println("Please do not enter any random value. Try again and enter the location again");
@@ -662,7 +656,7 @@ public class tictactoe {
                         break;
 
                     if (q == 1) {
-                        overtime=0;
+                        overtime = 0;
                         break;
                     }
                 }
@@ -671,7 +665,7 @@ public class tictactoe {
                 if (p2p == wa || p1p == wa)
                     break;
                 if (q == 1) {
-                    overtime=0;
+                    overtime = 0;
                     break;
                 }
             }
@@ -679,7 +673,7 @@ public class tictactoe {
             if (p1p == wa || p2p == wa)
                 break;
             if (q == 1) {
-                overtime=0;
+                overtime = 0;
                 break;
             }
         }
@@ -701,14 +695,14 @@ public class tictactoe {
         }
         for (i = true; i != false; i = ii) {
             if (q == 1) {
-                overtime=0;
+                overtime = 0;
                 break;
             }
             String qa;
             if (overtime != 1) {
                 System.out.print("Do you want to play Multi-Player mode again?(y/n) ");
                 qa = abc.readLine();
-                qa=qa.trim();
+                qa = qa.trim();
             } else {
                 System.out.println("Overtime match");
                 qa = "Y";
@@ -740,23 +734,30 @@ public class tictactoe {
         System.out.println("\n----------------------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println();
-        System.out.println("\t\t\t\t\tTic Tac Toe!\n\nGame Version- a0.5(alpha)\n");
+        System.out.println("\t\t\t\t\tTic Tac Toe!\n\nGame Version- a0.6(alpha)\n");
         System.out.println("This game is currently sponsored by: Kushagra Prasad");
         System.out.println("Catch him LIVE on SOCIAL MEDIA: ");
         System.out.println("               Facebook  : https://www.facebook.com/profile.php?id=100012095773529/");
         System.out.println("               Instagram : https://www.instagram.com/kushagra.prasad17/");
         System.out.println("               Twitter   : https://www.twitter.com/prasad_kushagra/");
         System.out.println("               Youtube   : https://www.youtube.com/channel/UCtKLew6p6-RiRN7ir81YPmg\n                           Channel Name: Kushagra Prasad");
-        System.out.println("       I you want yourself to be sponsored in the game, then please contact me(developer) from the provided details given in the bottom");
-        System.out.println("About this game: ");
-        System.out.println("Get stirred in the immense pleasure of joy and happiness, remembering the olden days coming back again to your life in a new and advanced way.\n This game brings about a variety of vintage changes like, the use of Character User Interface (aka CUI)\n \"Getting Bored? Or Nobody to play this game with!\", this game uses AI module(in its primitive form)  to get your smile back in your face, happiness ushering in your lips. \n This game also saves trees: So say no to paper! :D");
-        System.out.println("----------------------------------------------------------------------------------------------------------");
+        System.out.println("                If you want yourself to be sponsored in the game, then\n        please contact me(developer) from the provided details given in the bottom");
+
+        System.out.println("----------------------------------------------------------------------------------------------------------\n");
+        System.out.println("About this game:");
+        System.out.println("Get stirred in the immense pleasure of joy and happiness,\nremembering the olden days coming back again to your life in a new and advanced way.\nThis game brings about a variety of vintage changes like, the use of Character User Interface (aka CUI)\n\"Getting Bored? Or Nobody to play this game with!\", this game uses AI module(in its primitive form)\nto get your smile back in your face, happiness ushering in your lips.\nThis game also saves trees: So say no to paper! :D\n");
+        System.out.println("         a0.6(alpha) is a major update given to the game, fixing many bugs and adding new features.\n     Detailed update changes is provided below.");
         System.out.println("\nAbout the update: 1) Minor bugs fixed.");
+        System.out.println("                  2) Few grammatical errors have been fixed.");
+        System.out.println("                  3) App Icon added. However, this feature will be only functional with the launch of Android Application.");
+        System.out.println("                  4) Now, you cannot enter any random name while playing game. Only alphabets are allowed");
+        System.out.println("                  5) 'tictactoe.java' name has been replaced by 'game.java'");
+        System.out.println("        <The next update might take few days/weeks as the app is in reformation period.Thank You, -iamawesomedkm>");
+        System.out.println("A huge bunch of sentences, including the instructions section are being observed and changed everyday.\nSo, the next update will be another major update. Stay tuned! :D");
         System.out.println("Credits:  ");
         System.out.println("\tDeveloper and Project Manager- Dipanshu Kumar Mahato.\n\tBug finder and data analyst- Ayush Keshri");
         System.out.println("This game is an open source game. Distribute it as much as you can. NO trademark, NO copyright!!!(T&C applies)");
         System.out.println();
-        System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("Have you found any bug? Please mail me to the following ID: ");
         System.out.println("            dipanshumahato@gmail.com\n\tFeedback about this game is also welcomed!");
         System.out.println("----------------------------------------------------------------------------------------------------------");
@@ -765,11 +766,11 @@ public class tictactoe {
         System.out.println("               Facebook(highly active)  : https://www.facebook.com/profile.php?i.am.awesome.dkm/\n");
         System.out.println("!!!!!AN ANDROID APPLICATION FOR THIS GAME WILL BE AVAILABLE SOON!!!!!! Stay tuned\n");
         System.out.println("To people who wants to really read the code and improve this game:");
-        System.out.println("    This game, after fixation of lots of bugs, has become too complex to understand.\nAdding fuel to fire is the fact that there are very less usage of comments.\nI, Dipanshu Mahato, being the developer of this game, seek for apologise for the problem,\n By the first android app release, I will try to make the code as simple as possible, even adding comments. :D");
+        System.out.println("      | This game, after fixation of lots of bugs, has become too complex to understand.\n      | Adding fuel to fire is the fact that there are very less usage of comments.\n      | I, Dipanshu Mahato, being the developer of this game, seek for apologise for the problem,\n      | By the first android app release, I will try to make the code as simple as possible, even adding comments. :D");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------\n\n");
     }
-    
+
     private static void intro
             () /* This method only consists of print statements showing the interacting user how to play the game */ {
         System.out.println("\n----------------------------------------------------------------------------------------------------------");
@@ -821,11 +822,99 @@ public class tictactoe {
         System.out.println("         |   | O ");
         System.out.println("\nCongratulations!!! <player1>'s team wins this game\nGood try <player2>'s Team!!!");
         System.out.print("\nThat's it of the Tutorial course!You've learnt everything about this game.");
-        System.out.print("Now, you may proceed to the game");
+        System.out.print(" Now, you may proceed to the game");
         System.out.println(" :D\n");
         System.out.println("\n\t\t\t\tPS:Please scroll up to view the full instruction(s) again");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------\n\n");
     }
+
+    private static void naming(int p) throws IOException {
+        BufferedReader x = new BufferedReader((new InputStreamReader(System.in)));
+        boolean va;
+        boolean var = false;
+        for (va = true; va != false; va = var) {
+            if (p == 1) {
+                for (va = true; va != false; va = var) {
+                    System.out.print("Enter your single player name: ");
+                    name_sp = x.readLine();
+                    name_sp = name_sp.trim();
+                    for (int aq = 0; aq < name_sp.length(); aq++) {
+                        if (Character.isDigit(name_sp.charAt(aq)) == true) {
+                            System.out.println("You are not allowed to enter any numerical values. Please try again.");
+                            var = true;
+                            break;
+                        } else if (Character.isDigit(name_sp.charAt(aq)) != true && Character.isLetter(name_sp.charAt(aq)) != true) {
+                            if (name_sp.charAt(aq) != ' ') {
+                                System.out.println("You are not allowed to enter any value except spaces. Please try again.");
+                                var = true;
+                                break;
+                            }
+                        } else
+                            var = false;
+                    }
+                }
+            } else {
+                boolean sw, ws = false;
+                for (sw = true; sw != false; sw = ws) {
+                    for (va = true; va != false; va = var) {
+                        System.out.println(":::X-Player 1:::");
+                        System.out.print("Enter your name: ");
+                        p1 = x.readLine();
+                        p1 = p1.trim();
+                        for (int aq = 0; aq < p1.length(); aq++) {
+                            if (Character.isDigit(p1.charAt(aq)) == true) {
+                                System.out.println("Does a name even contains numbers? Try again");
+                                var = true;
+                                break;
+                            } else if (Character.isDigit(p1.charAt(aq)) != true && Character.isLetter(p1.charAt(aq)) != true) {
+                                if (p1.charAt(aq) != ' ') {
+                                    System.out.println("Please do not enter any random value. Try again.");
+                                    var = true;
+                                    break;
+                                }
+                            } else
+                                var = false;
+                        }
+                    }
+                    var = false;
+                    System.out.println(":::O-Player 2:::");
+                    for (va = true; va != false; va = var) {
+                        System.out.print("Enter your name: ");
+                        p2 = x.readLine();
+                        p2 = p2.trim();
+                        for (int aq = 0; aq < p2.length(); aq++) {
+                            if (Character.isDigit(p2.charAt(aq)) == true) {
+                                System.out.println("Does a name even contains numbers? Try again");
+                                var = true;
+                                break;
+                            } else if (Character.isDigit(p2.charAt(aq)) != true && Character.isLetter(p2.charAt(aq)) != true) {
+                                if (p2.charAt(aq) != ' ') {
+                                    System.out.println("Please do not enter any random value. Try again.");
+                                    var = true;
+                                    break;
+                                }
+                            } else
+                                var = false;
+                        }
+                    }
+                    if (p1.equalsIgnoreCase(p2)) {
+                        System.out.print("Are you one player? Type 'yes',if you want to play Single Player mode, else rename it by pressing any key: ");
+                        String nyn = x.readLine();
+                        nyn = nyn.trim();
+                        if (nyn.equalsIgnoreCase("y") || nyn.equalsIgnoreCase("yes")) {
+                            inp = "1";
+                            naming(1);
+                            sp(3, 2);
+                            ws = false;
+                            ssa=1;
+                        } else
+                            ws = true;
+                    } else
+                        ws = false;
+                }
+            }
+        }
+    }
 }
-//read the terms before editing the game
+//please read the terms before editing the game
