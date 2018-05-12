@@ -4,9 +4,9 @@ PROJECT TITLE: AI Toe
 
 PURPOSE: To re-enjoy all the fun ....and ditch boredom into darkness- Tic Tac Toe!
 
-VERSION: a0.5(alpha)
+VERSION: a0.6(alpha)
 
-HOW TO START THIS PROJECT:Build & Run 'package.bluej' or the 'tictactoe.java' file and enjoy the fun!
+HOW TO START THIS PROJECT:Build & Run 'package.bluej' or the 'game.java' file and enjoy the fun!
 
 Credits:
 
